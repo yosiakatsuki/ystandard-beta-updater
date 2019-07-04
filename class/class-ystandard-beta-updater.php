@@ -34,13 +34,6 @@ class Ystandard_Beta_Updater {
 	private $plugin_path = '';
 
 	/**
-	 * プラグイン情報
-	 *
-	 * @var array
-	 */
-	private $plugin_data = array();
-
-	/**
 	 * constructor.
 	 */
 	public function __construct() {
@@ -48,10 +41,6 @@ class Ystandard_Beta_Updater {
 		 * プラグインパスの取得
 		 */
 		$this->plugin_path = YSTD_BETA_UPDATER_PATH;
-		/**
-		 * プラグイン情報の取得
-		 */
-		$this->plugin_data = get_plugin_data( $this->plugin_path . self::PLUGIN_MAIN_FILE );
 
 		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
 		add_action( 'after_setup_theme', array( $this, 'update_check' ) );

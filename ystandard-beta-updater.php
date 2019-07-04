@@ -7,7 +7,7 @@
  * Author URI:      https://yosiakatsuki.net/
  * Text Domain:     ystandard-beta-updater
  * Domain Path:     /languages
- * Version:         1.0.0
+ * Version:         1.0.1
  *
  * @package         yStandard_Beta_Updater
  */
