@@ -14,5 +14,11 @@ yStandard の開発版アップデートを有効にするプラグイン
 
 ### Plugin Update Checker
 
-License: MIT
+License: MIT  
 Source : <https://github.com/YahnisElsts/plugin-update-checker>
+
+
+## 変更履歴
+
+### 1.1.0
+- yStandard v4 サポート

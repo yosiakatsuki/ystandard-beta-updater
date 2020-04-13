@@ -7,7 +7,7 @@
  * Author URI:      https://yosiakatsuki.net/
  * Text Domain:     ystandard-beta-updater
  * Domain Path:     /languages
- * Version:         1.0.1
+ * Version:         1.1.0
  *
  * @package         yStandard_Beta_Updater
  */
@@ -26,8 +26,8 @@
 	Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define( 'YSTD_BETA_UPDATER_PATH', plugin_dir_path( __FILE__ ) );
+define( 'YSTD_BETA_UPDATER_PATH', untrailingslashit( plugin_dir_path( __FILE__ ) ) );
 
-require_once YSTD_BETA_UPDATER_PATH . 'class/class-ystandard-beta-updater.php';
+require_once YSTD_BETA_UPDATER_PATH . '/class/class-ystandard-beta-updater.php';
 
 new Ystandard_Beta_Updater();

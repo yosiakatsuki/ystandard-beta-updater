@@ -42,9 +42,10 @@ class Ystandard_Beta_Updater {
 		 */
 		$this->plugin_path = YSTD_BETA_UPDATER_PATH;
 
-		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
-		add_action( 'after_setup_theme', array( $this, 'update_check' ) );
-		add_filter( 'ys_update_check_url', array( $this, 'check_url' ) );
+		add_action( 'plugins_loaded', [ $this, 'plugins_loaded' ] );
+		add_action( 'after_setup_theme', [ $this, 'update_check' ] );
+		add_filter( 'ys_update_check_url', [ $this, 'check_url' ] );
+		add_filter( 'ys_update_check_dir', [ $this, 'add_dev_dir' ] );
 	}
 
 	/**
@@ -61,6 +62,17 @@ class Ystandard_Beta_Updater {
 	}
 
 	/**
+	 * Add "/dev"
+	 *
+	 * @param string $dir Directory Name.
+	 *
+	 * @return string
+	 */
+	public function add_dev_dir( $dir ) {
+		return $dir . '/dev';
+	}
+
+	/**
 	 * チェックするURLを変更する
 	 *
 	 * @param string $url URL.
@@ -68,6 +80,11 @@ class Ystandard_Beta_Updater {
 	 * @return string
 	 */
 	public function check_url( $url ) {
+		// v3までの機能
+		if ( false === strpos( $url, 'ystandard/v3' ) ) {
+			return $url;
+		}
+
 		$url = 'https://wp-ystandard.com/download/ystandard/v3/dev/ystandard-info.json';
 
 		return $url;
@@ -80,13 +97,13 @@ class Ystandard_Beta_Updater {
 		if ( ! is_admin() ) {
 			return;
 		}
-		require_once $this->plugin_path . 'library/plugin-update-checker/plugin-update-checker.php';
+		require_once $this->plugin_path . '/library/plugin-update-checker/plugin-update-checker.php';
 		/**
 		 * アップデートチェック
 		 */
 		$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker(
 			self::UPDATE_META_DATA_URL,
-			$this->plugin_path . self::PLUGIN_MAIN_FILE,
+			$this->plugin_path . '/' . self::PLUGIN_MAIN_FILE,
 			self::UPDATE_SLUG
 		);
 	}
