@@ -20,5 +20,8 @@ Source : <https://github.com/YahnisElsts/plugin-update-checker>
 
 ## 変更履歴
 
+### 1.2.0
+- yStandard v3 -> v4 アップデート機能の追加
+
 ### 1.1.0
 - yStandard v4 サポート
